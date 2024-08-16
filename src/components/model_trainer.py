@@ -2,17 +2,14 @@ import os
 import sys
 from dataclasses import dataclass
 
-from catboost import CatBoostRegressor
-from sklearn.ensemble import (
-    AdaBoostRegressor,
-    GradientBoostingRegressor,
-    RandomForestRegressor,
-)
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import r2_score
-from sklearn.neighbors import KNeighborsRegressor
-from sklearn.tree import DecisionTreeRegressor
-from xgboost import XGBRegressor
+from catboost import CatBoostClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import SVC
+from sklearn.ensemble import RandomForestClassifier
+import xgboost as xgb
+from sklearn.ensemble import AdaBoostClassifier
 
 from src.exception import CustomException
 from src.logger import logging
@@ -38,14 +35,13 @@ class ModelTrainer:
                 test_array[:,-1]
             )
             models = {
-                "Random Forest": RandomForestRegressor(),
-                "Decision Tree": DecisionTreeRegressor(),
-                "Gradient Boosting": GradientBoostingRegressor(),
-                "Linear Regression": LinearRegression(),
-                "K-Neighbors Classifier": KNeighborsRegressor(),
-                "XGBClassifier": XGBRegressor(),
-                "CatBoosting Classifier": CatBoostRegressor(verbose=False),
-                "AdaBoost Classifier": AdaBoostRegressor(),
+                "Logistic": LogisticRegression(multi_class='ovr'),
+                "svc": SVC(),
+                "RF classifier": RandomForestClassifier(),
+                "K-Neighbors Classifier": KNeighborsClassifier(),
+                #"XGBClassifier": XGBRegressor(),
+                "CatBoosting Classifier": CatBoostClassifier(verbose=False),
+                #"AdaBoost Classifier": AdaBoostClassifier(),
             }
 
             model_report:dict=evaluate_models(X_train=X_train,y_train=y_train,X_test=X_test,y_test=y_test,
