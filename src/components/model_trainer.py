@@ -17,6 +17,7 @@ from src.exception import CustomException
 from src.logger import logging
 
 from src.utils import save_object,evaluate_models
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
 @dataclass
 class ModelTrainerConfig:
@@ -108,11 +109,8 @@ class ModelTrainer:
 
             predicted=best_model.predict(X_test)
 
-            r2_square = r2_score(y_test, predicted)
-            return r2_square
-
-
-
+            score = accuracy_score(y_test, predicted)
+            return score
 
 
         except Exception as e:
