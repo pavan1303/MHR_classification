@@ -1,0 +1,43 @@
+<html>
+<body>
+    <div class="login">
+       <h1>Maternal Health Risk</h1>
+
+       <form action="{{ url_for('predict_datapoint')}}" method="post">
+        <h1>
+            <legend>Maternal Health Risk Classification</legend>
+        </h1>
+        <div class="mb-3">
+            <label class="form-label">Age</label>
+            <input class="form-control" type="number" name="age"
+                placeholder="Enter your Age" min='0' max='100' />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">SystolicBP</label>
+            <input class="form-control" type="number" name="systolicBP"
+                placeholder="Enter your Age" min='70' max='160' />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">DiastolicBP</label>
+            <input class="form-control" type="number" name="diastolicBP"
+                placeholder="Enter your Age" min='49' max='100' />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">BS</label>
+            <input class="form-control" type="number" name="bs"
+                placeholder="Enter your Age" min='6' max='19' />
+        </div>
+        <div class="mb-3">
+            <label class="form-label">BodyTemp</label>
+            <input class="form-control" type="number" name="bodyTemp"
+                placeholder="Enter your Age" min='98' max='103' />
+        </div>
+        <div class="mb-3">
+            <input class="btn btn-primary" type="submit" value="Predict your RiskLevel" required />
+        </div>
+    </form>
+    <h2>
+       THE  prediction is {{results}}
+    </h2>
+   <body>
+</html>
