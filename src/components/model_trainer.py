@@ -8,7 +8,7 @@ from sklearn.metrics import accuracy_score, classification_report, confusion_mat
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier
-import xgboost as xgb
+import xgboost as XGBClassifier
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import StratifiedKFold
@@ -38,12 +38,12 @@ class ModelTrainer:
             )
             models = {
                 "Logistic": LogisticRegression(multi_class='ovr'),
-                #"svc": SVC(),
-                #"RF classifier": RandomForestClassifier(),
-                #"K-Neighbors Classifier": KNeighborsClassifier(),
-                #"XGBClassifier": XGBRegressor(),
-                #"CatBoosting Classifier": CatBoostClassifier(verbose=False),
-                #"AdaBoost Classifier": AdaBoostClassifier(),
+                "svc": SVC(),
+                "RF classifier": RandomForestClassifier(),
+                "K-Neighbors Classifier": KNeighborsClassifier(),
+                #"xgb": XGBClassifier(n_estimators=3),
+                "CatBoosting Classifier": CatBoostClassifier(verbose=False),
+                "AdaBoost Classifier": AdaBoostClassifier(),
                 #"grid":GridSearchCV(estimator=LogisticRegression(multi_class='ovr'), scoring='accuracy', cv=StratifiedKFold())
             }
             '''params={
