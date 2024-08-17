@@ -17,7 +17,6 @@ from src.exception import CustomException
 from src.logger import logging
 
 from src.utils import save_object,evaluate_models
-from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
 @dataclass
 class ModelTrainerConfig:
@@ -39,15 +38,15 @@ class ModelTrainer:
             )
             models = {
                 "Logistic": LogisticRegression(multi_class='ovr'),
-                "svc": SVC(),
-                "RF classifier": RandomForestClassifier(),
-                "K-Neighbors Classifier": KNeighborsClassifier(),
+                #"svc": SVC(),
+                #"RF classifier": RandomForestClassifier(),
+                #"K-Neighbors Classifier": KNeighborsClassifier(),
                 #"XGBClassifier": XGBRegressor(),
-                "CatBoosting Classifier": CatBoostClassifier(verbose=False),
+                #"CatBoosting Classifier": CatBoostClassifier(verbose=False),
                 #"AdaBoost Classifier": AdaBoostClassifier(),
-                "grid":GridSearchCV(estimator=LogisticRegression(multi_class='ovr'), scoring='accuracy', cv=StratifiedKFold())
+                #"grid":GridSearchCV(estimator=LogisticRegression(multi_class='ovr'), scoring='accuracy', cv=StratifiedKFold())
             }
-            params={
+            '''params={
                 "grid": {
                     'penalty': ['l1', 'l2', 'elasticnet'],
                     'c_vals': [100, 10, 1.0, 0.1, 0.01],
@@ -83,7 +82,7 @@ class ModelTrainer:
                     'n_estimators': [8,16,32,64,128,256]
                 }
             
-            }
+            }'''
 
             model_report:dict=evaluate_models(X_train=X_train,y_train=y_train,X_test=X_test,y_test=y_test,
                                              models=models)

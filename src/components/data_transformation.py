@@ -29,9 +29,9 @@ class DataTransformation:
         '''
         try:
             numerical_columns = ["Age", "SystolicBP", "DiastolicBP", "BS", "BodyTemp", "HeartRate"]
-            categorical_columns = [
+            '''categorical_columns = [
                 "RiskLevel"
-            ]
+            ]'''
 
             num_pipeline= Pipeline(
                 steps=[
@@ -41,7 +41,7 @@ class DataTransformation:
                 ]
             )
 
-            cat_pipeline=Pipeline(
+            '''cat_pipeline=Pipeline(
 
                 steps=[
                 ("imputer",SimpleImputer(strategy="most_frequent")),
@@ -49,15 +49,14 @@ class DataTransformation:
                 ("scaler",StandardScaler(with_mean=False))
                 ]
 
-            )
+            )'''
 
-            logging.info(f"Categorical columns: {categorical_columns}")
             logging.info(f"Numerical columns: {numerical_columns}")
 
             preprocessor=ColumnTransformer(
                 [
                 ("num_pipeline",num_pipeline,numerical_columns),
-                ("cat_pipelines",cat_pipeline,categorical_columns)
+                #("cat_pipelines",cat_pipeline,categorical_columns)
 
                 ]
 

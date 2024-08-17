@@ -4,7 +4,7 @@ import sys
 import numpy as np 
 import pandas as pd
 import dill
-from sklearn.metrics import r2_score
+from sklearn.metrics import accuracy_score#, classification_report, confusion_matrix
 
 from src.exception import CustomException
 
@@ -33,9 +33,9 @@ def evaluate_models(X_train, y_train,X_test,y_test,models):
 
             y_test_pred = model.predict(X_test)
 
-            train_model_score = r2_score(y_train, y_train_pred)
+            train_model_score = accuracy_score(y_train, y_train_pred)
 
-            test_model_score = r2_score(y_test, y_test_pred)
+            test_model_score = accuracy_score(y_test, y_test_pred)
 
             report[list(models.keys())[i]] = test_model_score
 
@@ -48,7 +48,6 @@ def load_object(file_path):
     try:
         with open(file_path, "rb") as file_obj:
             return dill.load(file_obj)
-
 
 
     except Exception as e:
