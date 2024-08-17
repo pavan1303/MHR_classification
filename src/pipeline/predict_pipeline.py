@@ -30,6 +30,7 @@ class CustomData:
         DiastolicBP:int,
         BS: int,
         BodyTemp: int,
+        HeartRate: int
         ):
 
         self.Age = Age
@@ -42,6 +43,8 @@ class CustomData:
 
         self.BodyTemp = BodyTemp
 
+        self.HeartRate = HeartRate
+
 
     def get_data_as_data_frame(self):
         try:
@@ -51,6 +54,7 @@ class CustomData:
                 "DiastolicBP": [self.DiastolicBP],
                 "BS": [self.BS],
                 "BodyTemp": [self.BodyTemp],
+                "HeartRate": [self.HeartRate]
             }
 
             return pd.DataFrame(custom_data_input_dict)

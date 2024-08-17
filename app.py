@@ -26,7 +26,7 @@ def predict_datapoint():
             DiastolicBP=float(request.form.get('diastolicBP')),
             BS=float(request.form.get('bs')),
             BodyTemp=float(request.form.get('bodyTemp')),
-            #reading_score=float(request.form.get('heartRate'))
+            HeartRate=float(request.form.get('heartRate'))
 
         )
         pred_df=data.get_data_as_data_frame()

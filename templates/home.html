@@ -33,11 +33,16 @@
                 placeholder="Enter your Age" min='98' max='103' />
         </div>
         <div class="mb-3">
+            <label class="form-label">HeartRate</label>
+            <input class="form-control" type="number" name="heartRate"
+                placeholder="Enter your Age" min='67' max='90' />
+        </div>
+        <div class="mb-3">
             <input class="btn btn-primary" type="submit" value="Predict your RiskLevel" required />
         </div>
     </form>
     <h2>
-       THE  prediction is {{results}}
+       The prediction is {{results}}
     </h2>
    <body>
 </html>
