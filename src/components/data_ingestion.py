@@ -26,7 +26,7 @@ class DataIngestion:
     def initiate_data_ingestion(self):
         logging.info("Entered the data ingestion method or component")
         try:
-            df=pd.read_csv('notebook\data\Maternal Health Risk Data Set.csv')
+            df=pd.read_csv('notebook/data/Maternal_Health_Risk_Data_Set.csv')#notebook\data\Maternal_Health_Risk_Data_Set.csv
             logging.info('Read the dataset as dataframe')
 
             os.makedirs(os.path.dirname(self.ingestion_config.train_data_path),exist_ok=True)
@@ -34,6 +34,12 @@ class DataIngestion:
             df.to_csv(self.ingestion_config.raw_data_path,index=False,header=True)
 
             logging.info("Train test split initiated")
+
+            #due to they are categorical features. So, converting them into numerical before splitting
+            df['RiskLevel'] = df['RiskLevel'].map({'low risk':0, 'mid risk':1, 'high risk':2})
+            #handling one outlier
+            df.loc[df.HeartRate == 7, "HeartRate"] = int(df['HeartRate'].mode())
+            
             train_set,test_set=train_test_split(df,test_size=0.2,random_state=42)
 
             train_set.to_csv(self.ingestion_config.train_data_path,index=False,header=True)

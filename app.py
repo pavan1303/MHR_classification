@@ -33,8 +33,16 @@ def predict_datapoint():
         print(pred_df)
 
         predict_pipeline=PredictPipeline()
-        results=predict_pipeline.predict(pred_df)
-        return render_template('home.html',results=results[0])
+        prediction=predict_pipeline.predict(pred_df)
+        result = prediction[0]
+        if result == 0:
+            result = 'low risk'
+        if result == 1:
+            result = 'mid risk'
+        if result == 2:
+            result = 'high risk'
+
+        return render_template('home.html',results=result)
 
 
 if __name__=="__main__":

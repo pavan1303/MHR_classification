@@ -9,4 +9,6 @@ statsmodels
 dill
 catboost
 Flask
+lightgbm
+scikit-optimize
 #-e .
