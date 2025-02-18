@@ -14,7 +14,7 @@ This project involves building and deploying a machine learning model on AWS. Th
 
 * **Model Deployment:** Flask API
 
-* **Cloud Platform:** AWS (EC2, S3, Lambda)
+* **Cloud Platform:** AWS (Elastic Bean Stalk)
 
 ## **3. Project Workflow**
 
@@ -40,11 +40,9 @@ This project involves building and deploying a machine learning model on AWS. Th
 
 **3.4 Deployment on AWS**
 
-* Hosted the Flask API on an AWS EC2 instance.
+* Deployed the Flask API using AWS Elastic Beanstalk.
 
-* Configured AWS S3 for storing model artifacts.
-
-* Set up an Nginx reverse proxy for handling requests.
+* Automated deployments using AWS CodePipeline.
 
 ## **4. Installation & Setup**
 
@@ -53,8 +51,7 @@ This project involves building and deploying a machine learning model on AWS. Th
 Clone the repository:
 
 ```
-git clone https://github.com/your-repo/ml-deployment.git
-cd ml-deployment
+git clone https://github.com/IamRam3/MHR_classification.git
 ```
 
 Create a virtual environment and install dependencies:
@@ -62,82 +59,26 @@ Create a virtual environment and install dependencies:
 ```
 python -m venv venv
 source venv/bin/activate  # On Windows use: venv\Scripts\activate
-pip install -r requirements.txt
+pip install .
 ```
 
 Run the Flask API locally:
 
 ```
-python app.py
+python application.py
 ```
 
 **4.2. AWS Deployment**
 
-Launch an EC2 Instance
+* Initialize Elastic Beanstalk Application
 
-Choose an Ubuntu AMI and set up security groups.
+* Create and Deploy the Environment
 
-SSH into the instance:
-
-```
-ssh -i your-key.pem ubuntu@your-ec2-ip
-```
-
-Install dependencies and start the Flask API:
-
-```
-sudo apt update && sudo apt install python3-pip nginx -y
-pip3 install -r requirements.txt
-python3 app.py
-```
-
-Configure Nginx for Reverse Proxy
-
-Edit Nginx configuration:
-
-```
-sudo nano /etc/nginx/sites-available/default
-```
-
-Add the following:
-
-```
-server {
-    listen 80;
-    server_name your-ec2-ip;
-    location / {
-        proxy_pass http://127.0.0.1:5000;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-    }
-}
-```
-
-Restart Nginx:
-
-```
-sudo systemctl restart nginx
-```
-
-Testing the Deployment
-
-```
-Access the API at http://your-ec2-ip/predict.
-```
-
-Send a request using:
-
-```
-curl -X POST http://your-ec2-ip/predict -H "Content-Type: application/json" -d '{"input": [your_data]}'
-```
+* Deploy Updates
 
 ## **5. Future Enhancements**
 
-* Implement model versioning with AWS Lambda.
-
 * Integrate a CI/CD pipeline for automated deployments.
-
-* Optimize API response time with AWS SageMaker.
 
 ## **6. Conclusion**
 
