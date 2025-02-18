@@ -68,6 +68,19 @@ Run the Flask API locally:
 python application.py
 ```
 
+# **Demo**
+## **Before Prediction**
+
+![Screenshot (680)](https://github.com/user-attachments/assets/6b55a548-36ce-43db-96d1-2d32588a289f)
+
+
+
+
+--------------------------------------------------------------------------------------------------------------
+## **After Prediction**
+![Screenshot (686)](https://github.com/user-attachments/assets/d13089ce-dbde-4896-bf6f-3b585d57e0a2)
+
+
 **4.2. AWS Deployment**
 
 * Initialize Elastic Beanstalk Application
