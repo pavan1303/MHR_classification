@@ -51,7 +51,7 @@ This project involves building and deploying a machine learning model on AWS. Th
 Clone the repository:
 
 ```
-git clone https://github.com/IamRam3/MHR_classification.git
+git clone git@github.com:pavan1303/MHR_classification.git
 ```
 
 Create a virtual environment and install dependencies:
@@ -97,6 +97,6 @@ python application.py
 
 This project demonstrates an end-to-end machine learning workflow from data preprocessing to cloud deployment. The integration with AWS ensures scalability and accessibility for real-world applications.
 
-📌 Author: [Your Name]
+📌 Author: Ella Pavan Kumar
 
-🔗 GitHub Repository: [Repo Link]
+🔗 GitHub Repository: git@github.com:pavan1303/MHR_classification.git
